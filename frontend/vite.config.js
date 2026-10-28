@@ -5,4 +5,10 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  server: {
+    // during development, API calls go to the Spring Boot backend
+    proxy: {
+      '/api': 'http://localhost:8080',
+    },
+  },
 })
